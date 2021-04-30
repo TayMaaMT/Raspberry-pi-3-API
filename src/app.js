@@ -1,11 +1,11 @@
-const exprss = require('express');
+const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require("./config/db");
 const user = require('./routes/user');
 
 require('dotenv').config();
-const app = exprss();
+const app = express();
 
 app.use(cors({
     credentials: true
