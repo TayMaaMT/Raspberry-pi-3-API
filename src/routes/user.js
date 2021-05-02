@@ -70,7 +70,7 @@ router.post('/newConsumption', async(req, res) => {
         const { consumption,username } = req.body;
         const user = await find('users', {username})
 
-        let balance = parseInt(user[0].balance) - consumption/100
+        let balance = parseInt(user[0].balance) - consumption*4
         if(balance<=0){
             balance = 0 ;
             let status = "فاصل"
