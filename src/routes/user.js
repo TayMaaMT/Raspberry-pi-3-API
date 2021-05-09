@@ -67,16 +67,18 @@ router.post('/addBalance', async(req, res) => {
 
 router.post('/newConsumption', async(req, res) => {
     try {
-        const { consumption,username } = req.body;
+        const { counter,username } = req.body;
         const user = await find('users', {username})
-
-        let balance = parseInt(user[0].balance) - consumption*4
+        let balance = parseInt(user[0].balance) - counter/user[0].pulses
+        let consumption = counter/pulses
         if(balance<=0){
             balance = 0 ;
             let status = "فاصل"
             const user_id = await update('users', username,{ status,balance,consumption });
+        }else{
+            const user_id = await update('users', username,{ balance,consumption });
         }
-        const user_id = await update('users', username,{ balance,consumption });
+        
         res.status(200).json({ update: "Done" });
     } catch (err) {
         console.log(err);
