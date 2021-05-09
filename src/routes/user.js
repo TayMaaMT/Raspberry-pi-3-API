@@ -42,7 +42,7 @@ router.post('/user', async(req, res) => {
         const { username } = req.body;
         const user = await find('users', { username } );
         console.log(user)
-        res.status(200).json({ user:user[0]});
+        res.status(200).json(user[0]);
     } catch (err) {
         console.log(err)
         res.status(400).json({ Error: "Unable to login" })
