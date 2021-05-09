@@ -64,6 +64,17 @@ router.post('/addBalance', async(req, res) => {
     }
 })
 
+router.post('/addPulses', async(req, res) => {
+    try {
+        const { pulses,username } = req.body;
+        await update('users', username,{ pulses });
+        res.status(200).json({ update: "Done" });
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({ Error: err });
+    }
+})
+
 
 router.post('/newConsumption', async(req, res) => {
     try {
