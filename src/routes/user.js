@@ -67,7 +67,7 @@ router.post('/addBalance', async(req, res) => {
 router.post('/addPulses', async(req, res) => {
     try {
         const { pulses,username } = req.body;
-        await update('users', username,{ pulses });
+        await update('users', username,{ price:pulses });
         res.status(200).json({ update: "Done" });
     } catch (err) {
         console.log(err);
