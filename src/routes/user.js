@@ -82,7 +82,7 @@ router.post('/newConsumption', async(req, res) => {
         const user = await find('users', {username})
         console.log(user[0].price)
         let balance = parseInt(user[0].balance) - (counter/user[0].pulses)*user[0].price
-        let consumption = (counter/user[0].pulses)*user[0].price
+        let consumption = (counter/user[0].pulses)
         if(balance<=0){
             balance = 0 ;
             let status = "فاصل"
